@@ -44,6 +44,7 @@ void tone_init (void)
 void set_tone (int period_us, wavetype wave)
 {
 	period=period_us;
+	period_count = 0;
 	step = 0;
 	toneType = wave;
 }
@@ -73,11 +74,11 @@ void playNextSample (void)
 		case RAMP:
 			sample = (step * MAX_DAC_CODE) / NUM_STEPS;
 			break;
+		case SAW:
+			sample = step < NUM_STEPS / 2 ? (step * MAX_DAC_CODE) / (NUM_STEPS/2) : MAX_DAC_CODE -((step * MAX_DAC_CODE) / (NUM_STEPS/2));
+			break;
 	}
 
 	Chip_DAC_UpdateValue (LPC_DAC, sample);
 
 }
-
-
-
