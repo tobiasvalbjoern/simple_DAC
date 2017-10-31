@@ -51,13 +51,13 @@ void set_tone (int period_us, wavetype wave)
 
 void playNextSample (void)
 {
+	//Delay routine so we can change the speed
 	period_count++;
 	if(period_count <= period){
 		return;
 	}
 
 	step++;
-
 	if (step >= NUM_STEPS)
 	{
 		step = 0;
