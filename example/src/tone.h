@@ -8,7 +8,8 @@
 typedef enum {
 	SQUARE,
 	RAMP,
-	SINE
+	SINE,
+	SAW
 } wavetype;
 
 void tone_init(void);
